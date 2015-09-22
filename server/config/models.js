@@ -29,7 +29,7 @@ module.exports.models = {
   ***************************************************************************/
   migrate: 'safe', // safe / alter / drop
   associations: {
-    list: "link",
+    list: "index",
     detail: "record"
   }
 };
