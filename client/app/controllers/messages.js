@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 
       var newMessage = this.store.createRecord('message', {
         title: this.get('title'),
-        user: [1]
+        user: this.get('user')
       });
       newMessage.save().then(function() {
       }, function(error) {
