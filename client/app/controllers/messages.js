@@ -9,12 +9,16 @@ export default Ember.Controller.extend({
   actions: {
     addMessage: function() {
       var self = this;
-      var newMessage = this.store.createRecord('message');
       var user = this.get('user');
+      var newMessage = this.store.createRecord('message', {
+        title: this.get('title'),
+      });
 
       newMessage.set('user', user);
 
-      return newMessage.save().then(function() {
+      return newMessage.save().then(function(id) {
+        console.log("Message added" + id);
+
       }, function(error) {
         console.warn('Save Failed.', error);
       });
