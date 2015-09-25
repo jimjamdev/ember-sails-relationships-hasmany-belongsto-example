@@ -16,8 +16,8 @@ export default Ember.Controller.extend({
 
       newMessage.set('user', user);
 
-      return newMessage.save().then(function(id) {
-        console.log("Message added" + id + "with user" + user);
+      return newMessage.save().then(function(result) {
+        console.log("Message added" + result + "with user" + user);
 
       }, function(error) {
         console.warn('Save Failed.', error);
