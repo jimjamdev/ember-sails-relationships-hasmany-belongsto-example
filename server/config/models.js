@@ -28,8 +28,8 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   migrate: 'safe', // safe / alter / drop
-  associations: {
-    list: "index",
+  /*associations: {
+    list: "list",
     detail: "record"
-  }
+  }*/
 };
