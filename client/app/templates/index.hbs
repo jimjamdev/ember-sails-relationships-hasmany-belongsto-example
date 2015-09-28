@@ -10,15 +10,15 @@
       {{input value=user_id class="form-control" required="required"}}    </div>
 
     <p>
-        <button class="btn btn-primary btn-block" type="submit">Create Message</button>
+        <button class="btn btn-primary btn-block" type="submit">Create Message</button> with {{title}} and {{user_id}}
     </p>
 </form>
 
 
 <ul class="list-group">
   {{#each model as |message|}}
-      <li class="list-group-item">{{message.title}} {{message.createdAt}} - <a
-              href="#" {{action "delete" message}}>X</a>
+      <li class="list-group-item">{{message.title}} {{message.createdAt}} by <small>{{message.user.name}}</small> :
+          <a href="#" {{action "delete" message}}>X</a> 
       </li>
   {{/each}}
 </ul>
