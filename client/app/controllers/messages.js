@@ -1,27 +1,24 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
-  model: function () {
-    return this.store.createRecord('message');
-  },
-
   actions: {
     addMessage: function() {
-      var self = this;
-      var user = this.get('user');
-      var newMessage = this.store.createRecord('message', {
+
+      let user = this.store.findRecord('user', 1);
+
+      let message = this.store.createRecord('message', {
         title: this.get('title'),
+        user: user
       });
+      //user.get('messages').pushObject(message);
+      message.save();
 
-      newMessage.set('user', user);
-
-      return newMessage.save().then(function(result) {
-        console.log("Message added" + result + "with user" + user);
+     /* return message.save().then(function(result) {
+        console.log("Message added" + result);
 
       }, function(error) {
         console.warn('Save Failed.', error);
-      });
+      });*/
     },
     deleteMessage: function(message) {
       message.destroyRecord(); return false; }
