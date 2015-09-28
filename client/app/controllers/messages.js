@@ -2,25 +2,29 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    addMessage: function() {
+    create: function () {
 
-      let user = this.store.findRecord('user', 1);
+      var userId = this.get('user_id');
+      var store = this.store;
 
-      let message = this.store.createRecord('message', {
-        title: this.get('title'),
-        user: user
+      var message = store.createRecord('message', {
+        title: this.get('title')
       });
-      //user.get('messages').pushObject(message);
-      message.save();
+      store.findRecord('user', userId).then(function (user) {
+        message.set('user', user);
+        message.save().then(function (result) {
+          console.log('Added ' + result);
+        }, function (error) {
+          console.error('Failed ' + error);
 
-     /* return message.save().then(function(result) {
-        console.log("Message added" + result);
+        });
+      });
 
-      }, function(error) {
-        console.warn('Save Failed.', error);
-      });*/
+
     },
-    deleteMessage: function(message) {
-      message.destroyRecord(); return false; }
+    delete: function (message) {
+      message.destroyRecord();
+      return false;
+    }
   }
 });
