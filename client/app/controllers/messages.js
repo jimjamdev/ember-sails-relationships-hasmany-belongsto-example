@@ -8,7 +8,9 @@ export default Ember.Controller.extend({
       var store = this.store;
 
       var message = store.createRecord('message', {
-        title: this.get('title')
+        title: this.get('title'),
+        createdAt: new Date(),
+        updatedAt: new Date()
       });
       store.findRecord('user', userId).then(function (user) {
         message.set('user', user);
