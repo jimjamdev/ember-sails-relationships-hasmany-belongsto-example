@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   actions: {
     create: function () {
 
-      var userId = this.get('user_id');
+      var user_id = this.get('user_id');
       var store = this.store;
 
       var message = store.createRecord('message', {
@@ -12,14 +12,9 @@ export default Ember.Controller.extend({
         createdAt: new Date(),
         updatedAt: new Date()
       });
-      store.findRecord('user', userId).then(function (user) {
+      store.findRecord('user', user_id).then(function (user) {
         message.set('user', user);
-        message.save().then(function (result) {
-          console.log('Added ' + result);
-        }, function (error) {
-          console.error('Failed ' + error);
-
-        });
+        message.save();
       });
 
 

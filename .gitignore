@@ -4,3 +4,5 @@ bower_components
 .tmp
 tmp
 dist
+dump.rdb
+npm-debug.log
