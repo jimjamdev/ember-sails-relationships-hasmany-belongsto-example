@@ -1,5 +1,5 @@
 <h2>Messages</h2>
-<form {{action 'addMessage' on='submit'}}>
+<form {{action 'create' on='submit'}}>
     <div class="form-group">
         <label for='name'>Title</label>
       {{input value=title class="form-control" required="required"}}
@@ -17,8 +17,8 @@
 
 <ul class="list-group">
   {{#each model as |message|}}
-      <li class="list-group-item">{{message.title}} by {{message.user}} {{message.createdAt}} - <a
-              href="#" {{action "deleteMessage" message}}>X</a>
+      <li class="list-group-item">{{message.title}} {{message.createdAt}} - <a
+              href="#" {{action "delete" message}}>X</a>
       </li>
   {{/each}}
 </ul>
