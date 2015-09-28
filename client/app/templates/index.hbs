@@ -17,8 +17,8 @@
 
 <ul class="list-group">
   {{#each model as |message|}}
-      <li class="list-group-item">{{message.title}} {{message.createdAt}} by #{{message.user.id}} {{message.user.name}} {{#each message.user as |user|}} {{user.name}} {{/each}} :
-          <a href="#" {{action "delete" message}}>X</a>
+      <li class="list-group-item">{{message.title}} {{message.createdAt}} <small>by {{message.user.name}}</small>
+          <a href="#" {{action "delete" message}}> Remove </a>
       </li>
   {{/each}}
 </ul>
