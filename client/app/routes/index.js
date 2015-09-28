@@ -3,6 +3,10 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   controllerName: 'messages',
   model: function() {
-    return this.store.findAll('message', {sort: 'createdAt asc'});
+    var store = this.store;
+    return store.findAll('message');
+  },
+  afterModel: function(model){
+    return Ember.RSVP.all(model.getEach('user'));
   }
 });
